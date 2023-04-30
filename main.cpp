@@ -154,7 +154,7 @@ public:
         bool hit = true; // boolean variable and set to true
         do {
             cout << "Dealer's Hand = " << endl;    // show dealer's hand
-            cout << "** " << house.getHand().substr(house.getHand().find(" ")) << endl;    // shows the dealer's hand while hiding the first card
+            cout << "  " << house.getHand().substr(house.getHand().find(" ")) << endl;    // shows the dealer's hand while hiding the first card
             cout << "Player's Hand = " << getScore() << endl;    // display the player's current total value of their hand
             cout << getHand() << endl;    // display the player's current hand/cards
 
