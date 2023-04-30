@@ -149,12 +149,12 @@ public:
 
 class Human : public Player {
 public:
-    void playerTurn(Dealer& house, Deck& deck, mutex& mtx) {
+    void playerTurn(Dealer& dealer, Deck& deck, mutex& mtx) {
         char choice; // holds users choice
         bool hit = true; // boolean variable and set to true
         do {
             cout << "Dealer's Hand = " << endl;    // show dealer's hand
-            cout << "  " << house.getHand().substr(house.getHand().find(" ")) << endl;    // shows the dealer's hand while hiding the first card
+            cout << "  " << dealer.getHand().substr(dealer.getHand().find(" ")) << endl;    // shows the dealer's hand while hiding the first card
             cout << "Player's Hand = " << getScore() << endl;    // display the player's current total value of their hand
             cout << getHand() << endl;    // display the player's current hand/cards
 
@@ -206,7 +206,7 @@ int main() {
   `---`      `---`     `---`             "---....--'    `--`---'     `----'             
 )" << '\n';
     cout << "This is a Blackjack game but created in C++. " << endl;
-    cout << "All the standard rules apply. House stays at 17. Do not exceed 21. Cards 2-10 are worth their number vaule. " << endl;
+    cout << "All the standard rules apply. Dealer stays at 17. Do not exceed 21. Cards 2-10 are worth their number vaule. " << endl;
     cout << "Face cards are worth 10. Ace is worth 1 or 11. " << endl;
     cout << " " << endl;
     // Getting the user's choice
@@ -268,10 +268,10 @@ int main() {
         }
 
         try {
-            dealerThread.join(); // Waits for the house's turn to finish
+            dealerThread.join(); // Waits for the dealer's turn to finish
         }
         catch (const system_error& e) {
-            cerr << "Error joining houseThread: " << e.what() << endl;
+            cerr << "Error joining dealerThread: " << e.what() << endl;
             return EXIT_FAILURE; // exits program with error status code to log
         }
 
